@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="shortcut icon" href="img/logo1.png"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background-color: #FFFFFF;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            background-color: #FFB46E; 
+            padding: 10px 20px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+
+        .nav-bar ul {
+            display: flex; 
+            list-style: none; 
+        }
+
+        .nav-bar ul li {
+            margin: 0 15px; 
+        }
+
+        .nav-bar ul li a {
+            text-decoration: none; 
+            color: #5D8F3E; 
+            font-size: 16px;
+            font-weight: bold;
+            padding: 1%;
+            transition: color 0.3s ease; 
+        }
+
+        .logo {
+            height: 50px; 
+            border-radius: 5px; 
+        }
+
+        .search-input {
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none; 
+            width: 200px; 
+        }
+
+        .search-button {
+            background-color: #FFBD81; 
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button img {
+            height: 16px; 
+            vertical-align: middle;
+        }
+
+        .search-button:hover {
+            background-color: #FFBD81; 
+        }
+
+        .button-admin {
+            background-color: #FFB672; 
+            border: none; 
+            color: white; 
+            padding: 10px 20px; 
+            text-align: center; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 16px; 
+            margin: 4px 2px; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            transition: background-color 0.3s, transform 0.2s; 
+        }
+
+        .button-admin:hover {
+            background-color: #45a049; 
+            transform: scale(1.05); 
+        }
+
+        .button-admin:active {
+            background-color: #3e8e41; 
+            transform: scale(0.95); 
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-container input,
+        .form-container textarea,
+        .form-container select,
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+    background-color: #FFBD81;
+    color: rgb(147, 90, 90);
+    padding: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-section {
+    width: 30%;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-left: 35%;
+}
+
+.social-links li {
+    display: inline-block;
+}
+
+.social-links img {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-bar">
+            <ul>
+                <li><img src="img/logo1.png" alt="Logo" class="logo"></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="detail.html">detail</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><input type="text" class="search-input" placeholder="Search here...">
+                    <button class="search-button">
+                        <img src="img/searsh.png" alt="Search Icon" class="img-search">
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <h1>Welcome Admin</h1>
+        <button type="button" class="button-admin">Click Here</button>
+    </div>
+
+    <div class="form-container">
+        <h2>Add a Restaurant</h2>
+        <form action="/submit-restaurant" method="POST">
+            <label for="name">Restaurant Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter the name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter the address" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter the phone number" required>
+
+            <label for="type">Cuisine Type:</label>
+            <select id="type" name="type" required>
+                <option value="" disabled selected>Choose a type</option>
+                <option value="moroccan">Moroccan</option>
+                <option value="italian">Italian</option>
+                <option value="chinese">Chinese</option>
+                <option value="indian">Indian</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Describe the restaurant" rows="4" required></textarea>
+
+            <button type="submit">Add Restaurant</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-section">
+              <h4>About Us</h4>
+              <p>We are a platform to discover the best restaurants in Tangier. Our mission is to help you find great places to eat and enjoy.</p>
+          </div>
+          <div class="footer-section">
+              <h4>Contact</h4>
+              <ul>
+                  <li><a href="mailto:contact@restaurants.com">Email: contact@restaurants.com</a></li>
+                  <li><a href="tel:+212123456789">Phone: +212 123 456 789</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h4>Follow Us</h4>
+              <ul class="social-links">
+                  <li><a href="#" target="_blank"><img src="img/facebook.png" alt="Facebook"></a></li>
+                  <li><a href="#" target="_blank"><img src="img/insta.png" alt="Instagram"></a></li>
+                  <li><a href="#" target="_blank"><img src="img/x.png" alt="Twitter"></a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 Restaurant Discoveries. All rights reserved.</p>
+      </div>
+  </footer>
+  
+    <script src="main.js">
+      
+    </script>
+</body>
+</html>

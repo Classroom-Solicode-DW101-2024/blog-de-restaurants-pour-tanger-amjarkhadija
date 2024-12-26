@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Gestion des Restaurants</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <header class="main-header">
+
+    
+        <nav class="nav-bar">
+            <ul>
+                <li><img src="img/logo1.png" alt="" class="logo"></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="detail.html">detail</a></li>
+                <li><a href="admine.html">Admin</a></li>
+                <li><input type="text" id="search-input"  placeholder="Searsh here..."><button class="search-button" id="search-button"> <img src="img/searsh.png" alt="" class="img-search"></button></li>
+            </ul>
+        </nav>
+    
+    </header>
+
+  <div class="container">
+    <div class="form-container">
+        <h2 id="form-title">Ajouter un Restaurant</h2>
+        <form id="restaurant-form">
+            <input type="hidden" id="restaurant-id">
+            <div>
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+            <div>
+                <label for="adresse">Adresse:</label>
+                <input type="text" id="adresse" name="adresse" required>
+            </div>
+            <div>
+                <label for="specialite">Spécialité:</label>
+                <input type="text" id="specialite" name="specialite" required>
+            </div>
+            <div>
+                <label for="notation">Notation:</label>
+                <input type="number" id="notation" name="notation" min="1" max="5" required>
+            </div>
+            <div>
+                <label for="numéro_de_téléphone">Numéro de téléphone:</label>
+                <input type="text" id="numéro_de_téléphone" name="numéro_de_téléphone" required>
+            </div>
+            <div>
+                <label for="avis">Avis:</label>
+                <textarea id="avis" name="avis" required></textarea>
+            </div>
+            <div>
+                <label for="cover">Image de couverture URL:</label>
+                <input type="text" id="cover" name="cover">
+            </div>
+            <div>
+                <label for="lien">Lien du restaurant:</label>
+                <input type="text" id="lien" name="lien">
+            </div>
+            <button type="submit" class="btn" id="submit-btn">Add Restaurant</button>
+
+           
+            <div class="restaurants-table-container">
+                <table id="restaurants-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Cuisine</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="restaurants-list">
+                        <!-- Restaurants will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+            
+
+            
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>We are a platform to discover the best restaurants in Tangier. Our mission is to help you find great places to eat and enjoy.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:contact@restaurants.com">Email: contact@restaurants.com</a></li>
+                    <li><a href="tel:+212123456789">Phone: +212 123 456 789</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul class="social-links">
+                    <li><a href="#" target="_blank"><img src="img/facebook.png" alt="Facebook"></a></li>
+                    <li><a href="#" target="_blank"><img src="img/insta.png" alt="Instagram"></a></li>
+                    <li><a href="#" target="_blank"><img src="img/x.png" alt="Twitter"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Restaurant Discoveries. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const restaurantsList = document.getElementById('restaurants-list');
+            
+                    // Fetch and display restaurants
+                    function fetchRestaurants() {
+                        fetch('http://localhost:3000/restaurants')
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.restaurants && data.restaurants.length > 0) {
+                                    restaurantsList.innerHTML = ''; // Clear existing rows
+                                    data.restaurants.forEach(restaurant => {
+                                        const row = document.createElement('tr');
+                                        row.innerHTML = `
+                                            <td>
+                                                <img src="${restaurant.cover}" alt="${restaurant.name}" 
+                                                     style="width: 100px; height: 100px; object-fit: cover;">
+                                            </td>
+                                            <td>${restaurant.name}</td>
+                                            <td>${restaurant.speciality}</td>
+                                            <td>${restaurant.notation} ⭐</td>
+                                            <td>
+                                                <button onclick="editRestaurant(${restaurant.id})">Edit</button>
+                                                <button onclick="deleteRestaurant(${restaurant.id})">Delete</button>
+                                            </td>
+                                        `;
+                                        restaurantsList.appendChild(row);
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error fetching restaurants:', error);
+                            });
+                    }
+            
+                    // Function to edit a restaurant
+                    window.editRestaurant = function(id) {
+                        // Implement edit functionality
+                        console.log('Editing restaurant', id);
+                    }
+            
+                    // Function to delete a restaurant
+                    window.deleteRestaurant = function(id) {
+                        if (confirm('Are you sure you want to delete this restaurant?')) {
+                            fetch(`http://localhost:3000/restaurants/${id}`, {
+                                method: 'DELETE'
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    fetchRestaurants(); // Refresh the list
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error deleting restaurant:', error);
+                            });
+                        }
+                    }
+            
+                    
+            
+                    // Initial fetch of restaurants
+                    fetchRestaurants();
+                });
+            
+        
+     
+        
+    const apiUrl = 'http://localhost:3000/restaurants';
+    const restaurantForm = document.getElementById('restaurant-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const restaurantsList = document.getElementById('restaurants-list');
+    const searchBar = document.getElementById('search-input');
+    const formTitle = document.getElementById('form-title');
+    let currentEditingRestaurant = null;
+    let restaurantsData = [];
+
+    // Récupérer tous les restaurants
+    async function getRestaurants() {
+        try {
+            const response = await fetch(apiUrl);
+            restaurantsData = await response.json();
+            displayRestaurants(restaurantsData);
+        } catch (error) {
+            restaurantsList.innerHTML = '<p>Erreur de récupération des données.</p>';
+            console.error(error);
+        }
+    }
+
+    // Afficher les restaurants
+    function displayRestaurants(restaurants) {
+        restaurantsList.innerHTML = restaurants.map(restaurant => `
+            <div class="card">
+                <img src="${restaurant.cover || 'default.jpg'}" alt="${restaurant.nom}">
+                <div class="card-title">${restaurant.nom}</div>
+                <div class="card-info">Adresse: ${restaurant.adresse}</div>
+                <div class="card-info">Spécialité: ${restaurant.specialite}</div>
+                <div class="card-info">Notation: ${restaurant.notation}</div>
+                <div class="card-info">Téléphone: ${restaurant.numéro_de_téléphone}</div>
+                <div class="card-info">Avis: ${restaurant.avis}</div>
+                <button class="btn" onclick="editRestaurant(${restaurant.id})">Modifier</button>
+                <button class="btn" onclick="deleteRestaurant(${restaurant.id})">Supprimer</button>
+            </div>
+        `).join('');
+    }
+
+    // Ajouter ou modifier un restaurant
+    async function handleFormSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData(restaurantForm);
+        const restaurantData = Object.fromEntries(formData.entries());
+        const method = currentEditingRestaurant ? 'PUT' : 'POST';
+        const url = currentEditingRestaurant ? `${apiUrl}/${currentEditingRestaurant.id}` : apiUrl;
+
+        try {
+            const response = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(restaurantData),
+            });
+
+            if (response.ok) {
+                alert(currentEditingRestaurant ? 'Restaurant mis à jour' : 'Restaurant ajouté');
+                getRestaurants();
+                resetForm();
+            } else {
+                alert('Erreur lors de l\'ajout/mise à jour du restaurant');
+            }
+        } catch (error) {
+            console.error('Erreur lors de l\'enregistrement:', error);
+        }
+    }
+
+    // Modifier un restaurant
+    function editRestaurant(id) {
+        const restaurant = restaurantsData.find(r => r.id === id);
+        if (restaurant) {
+            currentEditingRestaurant = restaurant;
+            formTitle.innerText = 'Modifier un Restaurant';
+            Object.entries(restaurant).forEach(([key, value]) => {
+                const input = document.getElementById(key);
+                if (input) input.value = value;
+            });
+            submitBtn.innerText = 'Mettre à jour';
+        }
+    }
+
+    // Supprimer un restaurant
+    async function deleteRestaurant(id) {
+        if (confirm('Voulez-vous vraiment supprimer ce restaurant ?')) {
+            try {
+                const response = await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+                if (response.ok) {
+                    alert('Restaurant supprimé');
+                    getRestaurants();
+                }
+            } catch (error) {
+                console.error('Erreur lors de la suppression:', error);
+            }
+        }
+    }
+
+    // Réinitialiser le formulaire
+    function resetForm() {
+        restaurantForm.reset();
+        currentEditingRestaurant = null;
+        formTitle.innerText = 'Ajouter un Restaurant';
+        submitBtn.innerText = 'Ajouter Restaurant';
+    }
+
+    // Recherche
+    searchBar.addEventListener('input', () => {
+        const searchTerm = searchBar.value.toLowerCase();
+        const filteredRestaurants = restaurantsData.filter(restaurant =>
+            restaurant.nom.toLowerCase().includes(searchTerm)
+        );
+        displayRestaurants(filteredRestaurants);
+    });
+
+    // Initialisation
+    restaurantForm.addEventListener('submit', handleFormSubmit);
+    getRestaurants();
+  </script>
+</body>
+</html>

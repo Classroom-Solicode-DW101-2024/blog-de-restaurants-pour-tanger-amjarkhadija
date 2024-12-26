@@ -1,0 +1,89 @@
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "L'Emirage",
+      "cover": "img/le-mirage-restaurant.jpg",
+      "address": "Boulevard Mohamed V, Tangier",
+      "speciality": "French & Moroccan Fusion",
+      "notation": 4.6,
+      "reviews": [
+        "A delightful fusion of French and Moroccan flavors. Excellent service!",
+        "The ambiance is classy, and the food is exquisite. Definitely worth a visit!"
+      ],
+      "site": "https://lemirage.com/",
+      "tel": "+212 5 39 95 16 28"
+    },
+    {
+      "id": 2,
+      "name": "El Tangerino Restaurant",
+      "cover": "img/El-Tangerino-Restaurant.jpg",
+      "address": "Mohammed VI Avenue, Tangier",
+      "speciality": "Spanish",
+      "notation": 4.8,
+      "reviews": [
+        "A luxury restaurant offering the best Spanish dishes!",
+        "Excellent service and very tasty food."
+      ],
+      "site": "http://www.eltangerino.com",
+      "tel": "+212 5 39 94 56 78"
+    },
+    {
+      "id": 3,
+      "name": "La Marina Restaurant",
+      "cover": "img/La-Marina-Restaurant.jpg",
+      "address": "Sea Street, Tangier",
+      "speciality": "Italian",
+      "notation": 4.2,
+      "reviews": [
+        "Great pizza and fresh pasta, nice atmosphere.",
+        "Good service, but the waiting time was a bit long."
+      ],
+      "site": "http://www.lamarina.com",
+      "tel": "+212 5 39 92 45 67"
+    },
+    {
+      "id": 4,
+      "name": "Le Ritz Restaurant",
+      "cover": "img/Le-Ritz -tanger-Restaurant.jpg",
+      "address": "Al Majd District, Tangier",
+      "speciality": "French",
+      "notation": 4.7,
+      "reviews": [
+        "The best place for French cuisine, the croissants are excellent!",
+        "Fast and elegant service, but the prices are high."
+      ],
+      "site": "http://www.leritz.com",
+      "tel": "+212 5 39 97 89 12"
+    },
+    {
+      "id": 5,
+      "name": "Blue Ocean Restaurant",
+      "cover": "img/blue _ocean.jpg",
+      "address": "Malabata Corniche, Tangier",
+      "speciality": "Seafood",
+      "notation": 4.6,
+      "reviews": [
+        "Fresh seafood and a beautiful sea view.",
+        "High quality but slightly expensive."
+      ],
+      "site": "https://blueoceandining.com//",
+      "tel": "+212 5 39 98 76 54"
+    },
+    {
+      "id": 6,
+      "name": "Palais Zahia",
+      "cover": "img/palais-zahia.jpg",
+      "address": "Place de la Kasbah, Tangier",
+      "speciality": "Moroccan",
+      "notation": 4.7,
+      "reviews": [
+        "An exceptional dining experience with authentic Moroccan cuisine!",
+        "Beautiful ambiance and excellent service. Highly recommended!"
+      ],
+      "site": "https://www.palais-zahia.com/",
+      "tel": "+212 5 39 93 15 78"
+    }
+    
+  ]
+}
